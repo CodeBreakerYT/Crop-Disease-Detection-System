@@ -51,45 +51,6 @@ AgriShield is an advanced, full-stack AI-driven agricultural suite designed to p
 
 ---
 
-## 📐 Architecture Flow
-
-```mermaid
-graph TD
-    subgraph Frontend [React Frontend (Vite)]
-        UI[Interactive UI & Dashboard]
-        ThreeJS[Three.js 3D Leaf Inspector]
-        Cam[Camera / File Upload System]
-        LS[Local Storage Fallback]
-    end
-
-    subgraph Backend [FastAPI Backend]
-        API[API Router / Endpoints]
-        CV[CV Engine - OpenCV verification & spot detection]
-        DL[DL Engine - TensorFlow/Keras CNN Models]
-        ML[ML Recommender - Random Forest Models]
-        Reanalysis[Scientific Reanalysis & Deficit Engine]
-    end
-
-    subgraph Cloud [Cloud Services]
-        Firebase[Firebase Authentication & Firestore History]
-    end
-
-    Cam -->|Upload leaf image| API
-    UI -->|NPK & Environmental input| API
-    API --> CV
-    CV -->|Valid leaf image| DL
-    DL -->|Disease prediction & severity| UI
-    CV -->|Disease spot contours| ThreeJS
-    API --> ML
-    ML --> Reanalysis
-    Reanalysis -->|Verified fertilizer recommendation & warnings| UI
-    
-    UI <-->|Sync diagnosis history| Firebase
-    UI <-->|Guest backup storage| LS
-```
-
----
-
 ## 📂 Project Structure
 
 ```text
@@ -194,15 +155,11 @@ This system was trained and evaluated using the following public/private dataset
 
 * **Crop Recommendation Dataset**: 
   * Features NPK, Temperature, Humidity, Soil pH, and Rainfall metrics across 22 distinct crop labels.
-  * *Link to dataset: [Insert Link Here]*
+  * *Link to dataset: https://www.kaggle.com/datasets/snikhilrao/crop-disease-detection-dataset*
 
 * **Fertilizer Prediction Dataset**:
   * Features soil moisture, temperature, humidity, Nitrogen, Phosphorus, Potassium, crop types, and soil types to predict optimal NPK blends.
-  * *Link to dataset: [Insert Link Here]*
-
-* **PlantVillage Dataset (Augmented)**:
-  * Contains thousands of high-resolution crop leaf images grouped into categories of healthy states and various fungal/bacterial/viral infections.
-  * *Link to dataset: [Insert Link Here]*
+  * *Link to dataset: https://www.kaggle.com/datasets/vipoooool/new-plant-diseases-dataset/data*
 
 *(Feel free to paste the exact URL links of your dataset directories or Kaggle pages above to preserve project reproducibility!)*
 
@@ -210,7 +167,7 @@ This system was trained and evaluated using the following public/private dataset
 
 ## ☁️ Deployment
 
-* **Backend**: Configured for immediate deployment on **Render.com** (via [render.yaml](file:///d:/Github/TEN/AI/Crop-Disease-Detection-System/render.yaml)).
+* **Backend**: Configured for immediate deployment on **huggingface** (via https://huggingface.co/spaces/PikachuEX/cropdiseasedetect3d).
 * **Frontend**: Configured for host services like **Netlify** (via [netlify.toml](file:///d:/Github/TEN/AI/Crop-Disease-Detection-System/netlify.toml)). Ensure you set environment variable `VITE_API_URL` on Netlify to point to your deployed backend URL.
 
 ---
