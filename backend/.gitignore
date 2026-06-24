@@ -12,8 +12,8 @@ build/
 # Temp uploads
 temp_uploads/
 
-# Model files (large binaries — excluded from git)
-models/
+# Model files (included in git so backend can access them in production)
+# models/
 
 # Environment
 .env
