@@ -24,8 +24,8 @@ import ThreeLeafModel from "./components/ThreeLeafModel";
 import { translations } from "./translations";
 import { authService, dbService } from "./firebase";
 
-// API Endpoint (point to local FastAPI server)
-const API_URL = "http://localhost:8000";
+// API Endpoint (supports VITE_API_URL environment variable, fallbacks to local FastAPI server)
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:8000";
 
 const cropsAvailable = [
   { id: "apple", name: "Apple" },
