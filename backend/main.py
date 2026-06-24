@@ -85,6 +85,16 @@ def get_dl_model(crop: str):
         crop_key = 'patato' # Model is named patato_model.h5
         
     if crop_key not in model_cache:
+        # Clear cache if it has more than 1 model to save memory on free tier hosting (Render has 512MB RAM limit)
+        if len(model_cache) >= 1:
+            model_cache.clear()
+            import gc
+            gc.collect()
+            try:
+                tf_keras.backend.clear_session()
+            except Exception:
+                pass
+            
         model_path = os.path.join(DL_MODELS_DIR, f"{crop_key}_model.h5")
         if not os.path.exists(model_path):
             raise HTTPException(status_code=404, detail=f"Model for crop '{crop}' not found at {model_path}")
@@ -92,6 +102,7 @@ def get_dl_model(crop: str):
         model_cache[crop_key] = tf_keras.models.load_model(model_path, compile=False)
     
     return model_cache[crop_key]
+
 
 def get_ml_models():
     """Loads crop and fertilizer recommendation ML models."""
