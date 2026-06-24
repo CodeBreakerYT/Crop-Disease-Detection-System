@@ -3,3 +3,6 @@ sample/
 
 # Large datasets folder
 datasets/
+
+# Hugging Face Space repository clone
+cropdiseasedetect3d/
