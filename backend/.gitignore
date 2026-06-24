@@ -1,0 +1,20 @@
+# Python virtual environment
+venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.egg-info/
+.eggs/
+dist/
+build/
+
+# Temp uploads
+temp_uploads/
+
+# Model files (large binaries — excluded from git)
+models/
+
+# Environment
+.env
+*.env.local
