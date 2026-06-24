@@ -392,9 +392,9 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 800;
   color: #fff;
   letter-spacing: 0.04em;
-  line-height: 1;
+  line-height: 1.1;
   text-transform: uppercase;
-  margin-top: 50px;
+  margin: 0;
 }
 
 .top-navbar-logo .logo-text span {
@@ -403,6 +403,7 @@ h1, h2, h3, h4, h5, h6 {
   font-family: monospace;
   letter-spacing: 0.12em;
   text-transform: uppercase;
+  margin-top: 2px;
 }
 
 /* ── Horizontal Nav Tabs ── */
